@@ -21,10 +21,10 @@ class Login extends Parent_Controller {
  		$username = $this->input->post('username');
 		$password = base64_encode($this->input->post('password')); 
 		$auth = $this->m_login->autentikasi($username,$password);  
-		$get_profile = $this->m_login->get_profile($this->session->userdata('id'));
+		$get_profile = $this->m_login->get_profile($username); 
 			if($auth->num_rows() > 0){ 
 				$this->session->set_userdata(array('username'=>$get_profile->username,'id'=>$get_profile->id,'nama'=>$get_profile->nama,'divisi'=>$get_profile->divisi));
-				redirect('dashboard');
+				redirect(base_url('dashboard'));
 			}else{
 				echo "<script language=javascript>
 				alert('Akun yang anda masukkan tidak tersedia, Periksa kembali!');
