@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Jabatan
+                                Ruangan
                             </h2>
                             <br>
                             <a href="javascript:void(0);" id="addmodal" class="btn btn-primary waves-effect">  <i class="material-icons">add_circle</i>  Tambah Data </a>
@@ -23,7 +23,8 @@
                                     <thead>
                                         <tr>
                                            
-                                            <th style="width:5%;">Jabatan</th> 
+											<th style="width:5%;">Kode ruangan</th>
+											<th style="width:5%;">Nama ruangan</th> 
                                             <th style="width:5%;">Opsi</th> 
                                         </tr>
                                     </thead> 
@@ -52,10 +53,15 @@
 
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="nama_jabatan" id="nama_jabatan" class="form-control" placeholder="Jabatan" />
+                                            <input type="text" name="kode_ruangan" id="kode_ruangan" class="form-control" placeholder="Kode ruangan" />
                                         </div>
 									</div> 
-									
+									<div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="nama_ruangan" id="nama_ruangan" class="form-control" placeholder="Nama ruangan" />
+                                        </div>
+									</div> 
+								 
                                    <button type="button" onclick="Simpan_Data();" class="btn btn-success waves-effect"> <i class="material-icons">save</i> Simpan</button>
 
                                    <button type="button" name="cancel" id="cancel" class="btn btn-danger waves-effect" onclick="javascript:Bersihkan_Form();" data-dismiss="modal"> <i class="material-icons">clear</i> Batal</button>
@@ -71,14 +77,16 @@
         $("#defaultModal").modal('show');
         $('#user_form')[0].reset();
         $.ajax({
-             url:"<?php echo base_url(); ?>jabatan/get_data_edit/"+id,
+             url:"<?php echo base_url(); ?>ruangan/get_data_edit/"+id,
              type:"GET",
              dataType:"JSON", 
              success:function(result){ 
                   console.log(result);
                  $("#defaultModal").modal('show'); 
                  $("#id").val(result.id); 
-                 $("#nama_jabatan").val(result.nama_jabatan); 
+                 $("#nama_ruangan").val(result.nama_ruangan);
+				 $("#kode_ruangan").val(result.kode_ruangan);
+				 $("#alamat").val(result.alamat); 
              }
          });
     }
@@ -90,7 +98,7 @@
     function Hapus_Data(id){
         if(confirm('Anda yakin ingin menghapus data ini?')){ 
 			$.ajax({
-				url : "<?php echo base_url('jabatan/hapus_data')?>/"+id,
+				url : "<?php echo base_url('ruangan/hapus_data')?>/"+id,
 				type: "GET",
 				dataType: "JSON",
 				success: function(data)
@@ -107,7 +115,7 @@
 						});
 					
 				},
-				error: function (jqXHR, textjabatan, errorThrown)
+				error: function (jqXHR, textruangan, errorThrown)
 				{
 					alert('Error deleting data');
 				}
@@ -119,7 +127,7 @@
         var formData = new FormData($('#user_form')[0]); 
             //transaksi dibelakang layar
             $.ajax({
-             url:"<?php echo base_url(); ?>jabatan/simpan_data",
+             url:"<?php echo base_url(); ?>ruangan/simpan_data",
              type:"POST",
              data:formData,
              contentType:false,  
@@ -149,7 +157,7 @@
         }); 
 
      	$('#example').DataTable( {
-            "ajax": "<?php echo base_url(); ?>jabatan/fetch_jabatan" 
+            "ajax": "<?php echo base_url(); ?>ruangan/fetch_ruangan" 
                
         }); 
     }); 

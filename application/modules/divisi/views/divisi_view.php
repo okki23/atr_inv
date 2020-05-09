@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Jabatan
+                                Divisi
                             </h2>
                             <br>
                             <a href="javascript:void(0);" id="addmodal" class="btn btn-primary waves-effect">  <i class="material-icons">add_circle</i>  Tambah Data </a>
@@ -23,7 +23,7 @@
                                     <thead>
                                         <tr>
                                            
-                                            <th style="width:5%;">Jabatan</th> 
+                                            <th style="width:5%;">Divisi</th> 
                                             <th style="width:5%;">Opsi</th> 
                                         </tr>
                                     </thead> 
@@ -52,7 +52,7 @@
 
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="nama_jabatan" id="nama_jabatan" class="form-control" placeholder="Jabatan" />
+                                            <input type="text" name="nama_divisi" id="nama_divisi" class="form-control" placeholder="divisi" />
                                         </div>
 									</div> 
 									
@@ -71,14 +71,14 @@
         $("#defaultModal").modal('show');
         $('#user_form')[0].reset();
         $.ajax({
-             url:"<?php echo base_url(); ?>jabatan/get_data_edit/"+id,
+             url:"<?php echo base_url(); ?>divisi/get_data_edit/"+id,
              type:"GET",
              dataType:"JSON", 
              success:function(result){ 
                   console.log(result);
                  $("#defaultModal").modal('show'); 
                  $("#id").val(result.id); 
-                 $("#nama_jabatan").val(result.nama_jabatan); 
+                 $("#nama_divisi").val(result.nama_divisi); 
              }
          });
     }
@@ -90,7 +90,7 @@
     function Hapus_Data(id){
         if(confirm('Anda yakin ingin menghapus data ini?')){ 
 			$.ajax({
-				url : "<?php echo base_url('jabatan/hapus_data')?>/"+id,
+				url : "<?php echo base_url('divisi/hapus_data')?>/"+id,
 				type: "GET",
 				dataType: "JSON",
 				success: function(data)
@@ -107,7 +107,7 @@
 						});
 					
 				},
-				error: function (jqXHR, textjabatan, errorThrown)
+				error: function (jqXHR, textdivisi, errorThrown)
 				{
 					alert('Error deleting data');
 				}
@@ -119,7 +119,7 @@
         var formData = new FormData($('#user_form')[0]); 
             //transaksi dibelakang layar
             $.ajax({
-             url:"<?php echo base_url(); ?>jabatan/simpan_data",
+             url:"<?php echo base_url(); ?>divisi/simpan_data",
              type:"POST",
              data:formData,
              contentType:false,  
@@ -149,7 +149,7 @@
         }); 
 
      	$('#example').DataTable( {
-            "ajax": "<?php echo base_url(); ?>jabatan/fetch_jabatan" 
+            "ajax": "<?php echo base_url(); ?>divisi/fetch_divisi" 
                
         }); 
     }); 

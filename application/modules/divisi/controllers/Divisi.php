@@ -1,15 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
  
-class jabatan extends Parent_Controller {
+class Divisi extends Parent_Controller {
  
-  var $nama_tabel = 'm_jabatan';
-  var $daftar_field = array('id','nama_jabatan');
+  var $nama_tabel = 'm_divisi';
+  var $daftar_field = array('id','nama_divisi');
   var $primary_key = 'id';
   
  	public function __construct(){
  		parent::__construct();
- 		$this->load->model('m_jabatan'); 
+ 		$this->load->model('m_divisi'); 
 		if(!$this->session->userdata('username')){
 		   echo "<script language=javascript>
 				 alert('Anda tidak berhak mengakses halaman ini!');
@@ -20,25 +20,25 @@ class jabatan extends Parent_Controller {
  
 	public function index(){
 		$data['judul'] = $this->data['judul']; 
-		$data['konten'] = 'jabatan/jabatan_view';
+		$data['konten'] = 'divisi/divisi_view';
 		$this->load->view('template_view',$data);		
    
 	}  
 
-  	public function fetch_jabatan(){  
-       $getdata = $this->m_jabatan->fetch_jabatan();
+  	public function fetch_divisi(){  
+       $getdata = $this->m_divisi->fetch_divisi();
        echo json_encode($getdata);   
   	} 
 	 
 	public function get_data_edit(){
 		$id = $this->uri->segment(3);
-		$sql = $this->db->where('id',$id)->get('m_jabatan')->row(); 
+		$sql = $this->db->where('id',$id)->get('m_divisi')->row(); 
 		echo json_encode($sql,TRUE);
 	}
 	 
 	public function hapus_data(){
 		$id = $this->uri->segment(3);  
-    	$delete = $this->db->where('id',$id)->delete('m_jabatan');
+    	$delete = $this->db->where('id',$id)->delete('m_divisi');
     	 
     	if($delete){
     		$result = array("response"=>array('message'=>'success'));	
@@ -50,9 +50,9 @@ class jabatan extends Parent_Controller {
 	}
 	 
 	public function simpan_data(){  
-		$data_form = $this->m_jabatan->array_from_post($this->daftar_field); 
+		$data_form = $this->m_divisi->array_from_post($this->daftar_field); 
 		$id = isset($data_form['id']) ? $data_form['id'] : NULL;  
-		$simpan_data = $this->m_jabatan->simpan_data($data_form,$this->nama_tabel,$this->primary_key,$id);
+		$simpan_data = $this->m_divisi->simpan_data($data_form,$this->nama_tabel,$this->primary_key,$id);
 	
 			if($simpan_data){
 				$result = array("response"=>array('message'=>'success'));

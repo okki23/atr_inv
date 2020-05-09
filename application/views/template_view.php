@@ -160,29 +160,47 @@
 							</a>
 							<ul class="ml-menu"> 
 								<li>
-									<a href="<?php echo base_url('gedung'); ?>" target="_blank">
+									<a href="<?php echo base_url('gedung'); ?>">
 										<i class="material-icons">dns</i>
 										<span>Gedung</span>
 									</a>
 								</li>
 								<li>
-									<a href="<?php echo base_url('ruangan'); ?>" target="_blank">
+									<a href="<?php echo base_url('ruangan'); ?>">
 										<i class="material-icons">dns</i>
 										<span>Ruangan</span>
 									</a>
 								</li>
 								<li>
-									<a href="<?php echo base_url('barang'); ?>" target="_blank">
+									<a href="<?php echo base_url('barang'); ?>">
 										<i class="material-icons">dns</i>
 										<span>Barang</span>
 									</a>
 								</li>  
 								<li>
-									<a href="<?php echo base_url('pegawai'); ?>" target="_blank">
+									<a href="<?php echo base_url('pegawai'); ?>">
 										<i class="material-icons">dns</i>
 										<span>Pegawai</span>
 									</a>
 								</li>  
+								<li>
+									<a href="<?php echo base_url('jabatan'); ?>">
+										<i class="material-icons">dns</i>
+										<span>Jabatan</span>
+									</a>
+								</li>  
+								<li>
+									<a href="<?php echo base_url('divisi'); ?>">
+										<i class="material-icons">dns</i>
+										<span>Divisi</span>
+									</a>
+								</li>   
+								<li>
+									<a href="<?php echo base_url('user'); ?>">
+										<i class="material-icons">dns</i>
+										<span>User</span>
+									</a>
+								</li>   
 							</ul>
 						</li>  
                 	</ul>

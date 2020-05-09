@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Jabatan
+                                Gedung
                             </h2>
                             <br>
                             <a href="javascript:void(0);" id="addmodal" class="btn btn-primary waves-effect">  <i class="material-icons">add_circle</i>  Tambah Data </a>
@@ -23,7 +23,9 @@
                                     <thead>
                                         <tr>
                                            
-                                            <th style="width:5%;">Jabatan</th> 
+											<th style="width:5%;">Kode Gedung</th>
+											<th style="width:5%;">Nama Gedung</th>
+											<th style="width:5%;">Alamat</th> 
                                             <th style="width:5%;">Opsi</th> 
                                         </tr>
                                     </thead> 
@@ -52,7 +54,17 @@
 
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="nama_jabatan" id="nama_jabatan" class="form-control" placeholder="Jabatan" />
+                                            <input type="text" name="kode_gedung" id="kode_gedung" class="form-control" placeholder="Kode Gedung" />
+                                        </div>
+									</div> 
+									<div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="nama_gedung" id="nama_gedung" class="form-control" placeholder="Nama Gedung" />
+                                        </div>
+									</div> 
+									<div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Alamat" />
                                         </div>
 									</div> 
 									
@@ -71,14 +83,16 @@
         $("#defaultModal").modal('show');
         $('#user_form')[0].reset();
         $.ajax({
-             url:"<?php echo base_url(); ?>jabatan/get_data_edit/"+id,
+             url:"<?php echo base_url(); ?>gedung/get_data_edit/"+id,
              type:"GET",
              dataType:"JSON", 
              success:function(result){ 
                   console.log(result);
                  $("#defaultModal").modal('show'); 
                  $("#id").val(result.id); 
-                 $("#nama_jabatan").val(result.nama_jabatan); 
+                 $("#nama_gedung").val(result.nama_gedung);
+				 $("#kode_gedung").val(result.kode_gedung);
+				 $("#alamat").val(result.alamat); 
              }
          });
     }
@@ -90,7 +104,7 @@
     function Hapus_Data(id){
         if(confirm('Anda yakin ingin menghapus data ini?')){ 
 			$.ajax({
-				url : "<?php echo base_url('jabatan/hapus_data')?>/"+id,
+				url : "<?php echo base_url('gedung/hapus_data')?>/"+id,
 				type: "GET",
 				dataType: "JSON",
 				success: function(data)
@@ -107,7 +121,7 @@
 						});
 					
 				},
-				error: function (jqXHR, textjabatan, errorThrown)
+				error: function (jqXHR, textgedung, errorThrown)
 				{
 					alert('Error deleting data');
 				}
@@ -119,7 +133,7 @@
         var formData = new FormData($('#user_form')[0]); 
             //transaksi dibelakang layar
             $.ajax({
-             url:"<?php echo base_url(); ?>jabatan/simpan_data",
+             url:"<?php echo base_url(); ?>gedung/simpan_data",
              type:"POST",
              data:formData,
              contentType:false,  
@@ -149,7 +163,7 @@
         }); 
 
      	$('#example').DataTable( {
-            "ajax": "<?php echo base_url(); ?>jabatan/fetch_jabatan" 
+            "ajax": "<?php echo base_url(); ?>gedung/fetch_gedung" 
                
         }); 
     }); 
