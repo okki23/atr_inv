@@ -183,7 +183,7 @@
 										<span>Pegawai</span>
 									</a>
 								</li>  
-								<li>
+								<!-- <li>
 									<a href="<?php echo base_url('jabatan'); ?>">
 										<i class="material-icons">dns</i>
 										<span>Jabatan</span>
@@ -194,13 +194,45 @@
 										<i class="material-icons">dns</i>
 										<span>Divisi</span>
 									</a>
-								</li>   
+								</li>    -->
 								<li>
 									<a href="<?php echo base_url('user'); ?>">
 										<i class="material-icons">dns</i>
 										<span>User</span>
 									</a>
 								</li>   
+							</ul>
+						</li>
+						<li>
+							<a href="javascript:void(0);" class="menu-toggle" >
+								<i class="material-icons">dns</i>
+								<span>Transaksi</span>
+							</a>
+							<ul class="ml-menu"> 
+								<li>
+									<a href="<?php echo base_url('mutasi'); ?>">
+										<i class="material-icons">dns</i>
+										<span>Mutasi</span>
+									</a>
+								</li>
+								<li>
+									<a href="<?php echo base_url('penghapusan'); ?>">
+										<i class="material-icons">dns</i>
+										<span>Penghapusan</span>
+									</a>
+								</li>
+								<li>
+									<a href="<?php echo base_url('perbaikan'); ?>">
+										<i class="material-icons">dns</i>
+										<span>Perbaikan</span>
+									</a>
+								</li>  
+								<li>
+									<a href="<?php echo base_url('inventaris'); ?>">
+										<i class="material-icons">dns</i>
+										<span>Inventaris</span>
+									</a>
+								</li>  
 							</ul>
 						</li>  
                 	</ul>

@@ -1,37 +1,29 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
  
-class Barang extends Parent_Controller {
-  
-  var $nama_tabel = 'm_barang';
-  var $daftar_field = array('id','kode_barang', 'nama_barang','merk_model', 'no_serial_pabrik', 'ukuran', 'bahan', 'tahun_buat', 'no_kode_barang', 'jumlah_barang', 'satuan_barang', 'harga_beli');
-  var $primary_key = 'id'; 
-  
+class Rss extends Parent_Controller {
+   
  	public function __construct(){
- 		parent::__construct();
- 		$this->load->model('m_barang'); 
-		if(!$this->session->userdata('username')){
-		   echo "<script language=javascript>
-				 alert('Anda tidak berhak mengakses halaman ini!');
-				 window.location='" . base_url('login') . "';
-				 </script>";
-		}
+		 parent::__construct(); 
+		 $this->load->library('rssparser');
  	} 
  
   	public function index(){
-  		$data['judul'] = $this->data['judul']; 
-  		$data['konten'] = 'barang/barang_view';
-  		$this->load->view('template_view',$data);		
+		$this->rssparser->set_feed_url('https://www.inews.id/feed/partner/rctiplus/news');
+		$this->rssparser->set_cache_life(30);
+		$data['judul'] = 'gue keren!';
+		$data['list'] = $this->rssparser->getFeed(5);  
+  		$this->load->view('rss/rss_view',$data);		
      
   	} 
  
-  	public function fetch_barang(){  
-       $getdata = $this->m_barang->fetch_barang();
+  	public function fetch_rss(){  
+       $getdata = $this->m_rss->fetch_rss();
        echo json_encode($getdata);   
 	}
 
-	public function fetch_barang_front(){  
-		$getdata = $this->m_barang->fetch_barang_front();
+	public function fetch_rss_front(){  
+		$getdata = $this->m_rss->fetch_rss_front();
 		echo json_encode($getdata);   
 	 }
 
@@ -40,7 +32,7 @@ class Barang extends Parent_Controller {
        
 		$no_transaksix =  $this->input->post('no_transaksix');
 		 
-		  $sql = "select a.*,b.nama_kategori,c.nama_sub_kategori from m_barang a
+		  $sql = "select a.*,b.nama_kategori,c.nama_sub_kategori from m_rss a
 		left join m_kategori b on b.id = a.id_kategori
 		left join m_sub_kategori c on c.id = a.id_sub_kategori";
 		  $exsql = $this->db->query($sql)->result();
@@ -49,7 +41,7 @@ class Barang extends Parent_Controller {
 			 foreach ($exsql as $key => $value) {  
 				  $sub_array['nama_kategori'] = $value->nama_kategori;
 				  $sub_array['nama_sub_kategori'] = $value->nama_sub_kategori;  
-				  $sub_array['nama_barang'] = $value->nama_barang;
+				  $sub_array['nama_rss'] = $value->nama_rss;
 				 
 				  $sub_array['action'] =  "<button typpe='button' onclick='GetItemList(".$value->id.");' class = 'btn btn-primary'> <i class='material-icons'>shopping_cart</i> Pilih </button>";  
 	 
@@ -61,10 +53,10 @@ class Barang extends Parent_Controller {
 	  }
 	public function fetch_item_list(){
 		$id = $this->uri->segment(3);
-		$sql = $this->db->where('id',$id)->get('m_barang')->row();
+		$sql = $this->db->where('id',$id)->get('m_rss')->row();
 	    echo json_encode($sql,TRUE);
 	}
-	public function fetch_sub_kategori_barang(){  
+	public function fetch_sub_kategori_rss(){  
   	   
 		$id_kategori =  $this->input->post('id_kategori');
 		$sql = "select * from m_sub_kategori where id_kategori = '".$id_kategori."' ";
@@ -91,7 +83,7 @@ class Barang extends Parent_Controller {
 	 
 	public function get_data_edit(){
 		$id = $this->uri->segment(3);
-		$sql = "select a.*,b.nama_kategori,c.nama_sub_kategori from m_barang a
+		$sql = "select a.*,b.nama_kategori,c.nama_sub_kategori from m_rss a
 		left join m_kategori b on b.id = a.id_kategori
 		left join m_sub_kategori c on c.id = a.id_sub_kategori where a.id = '".$id."' ";
 
@@ -103,7 +95,7 @@ class Barang extends Parent_Controller {
 		$id = $this->uri->segment(3);  
 	
 
-    $sqlhapus = $this->m_barang->hapus_data($id);
+    $sqlhapus = $this->m_rss->hapus_data($id);
 		
 		if($sqlhapus){
 			$result = array("response"=>array('message'=>'success'));
@@ -117,12 +109,12 @@ class Barang extends Parent_Controller {
 	public function simpan_data(){
     
     
-    $data_form = $this->m_barang->array_from_post($this->daftar_field);
+    $data_form = $this->m_rss->array_from_post($this->daftar_field);
 
     $id = isset($data_form['id']) ? $data_form['id'] : NULL; 
  
 
-    $simpan_data = $this->m_barang->simpan_data($data_form,$this->nama_tabel,$this->primary_key,$id);
+    $simpan_data = $this->m_rss->simpan_data($data_form,$this->nama_tabel,$this->primary_key,$id);
  
 		if($simpan_data){
 			$result = array("response"=>array('message'=>'success'));
