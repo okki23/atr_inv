@@ -29,6 +29,11 @@ class Barang extends Parent_Controller {
        $getdata = $this->m_barang->fetch_barang();
        echo json_encode($getdata);   
 	}
+
+	public function fetch_barang_all(){  
+		$getdata = $this->m_barang->fetch_barang_all();
+		echo json_encode($getdata);   
+	 }
   
 	 
 	public function get_data_edit(){
