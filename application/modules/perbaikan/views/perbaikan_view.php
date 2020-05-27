@@ -10,7 +10,7 @@ f
                     <div class="card">
                         <div class="header">
                             <h2>
-								Penghapusan
+								Perbaikan
                             </h2>
                             <br>
                             <a href="javascript:void(0);" id="addmodal" class="btn btn-primary waves-effect">  <i class="material-icons">add_circle</i>  Tambah Data </a>
@@ -25,7 +25,7 @@ f
 											<th style="width:5%;">Nama Barang</th>
                                             <th style="width:10%;">Kode Ruangan</th>  
 											<th style="width:10%;">Nama Ruangan</th> 
-											<th style="width:10%;">Tanggal Hapus</th>  
+											<th style="width:10%;">Tanggal Perbaikan</th>  
 											<th style="width:15%;">Opsi</th> 
 										</tr>
 									</thead> 
@@ -64,25 +64,16 @@ f
                                     </div> 
                                     <div class="form-group">
                                         <div class="form-line">
-										<label>Tanggal Hapus</label>
-                                            <input type="text" name="tgl_hapus" id="tgl_hapus" class="datepicker form-control" placeholder="Tanggal Hapus" />
+                                            <input type="text" name="tgl_perbaikan" id="tgl_perbaikan" class="datepicker form-control" placeholder="Tanggal Perbaikan" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="form-line">
-										<label>Dokumen</label>
-                                            <input type="text" name="dokumen" id="dokumen" class="form-control" placeholder="Dokumen" />
-                                        </div>
-                                    </div>
-									<div class="form-group">
-                                        <div class="form-line">
-										<label>Jumlah Barang</label>
-                                            <input type="number" name="jml_barang" id="jml_barang" class="form-control" placeholder="Jumlah Barang" />
+                                            <input type="text" name="kerusakan" id="kerusakan" class="form-control" placeholder="Kerusakan" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="form-line">
-										<label>Keterangan</label>
                                             <input type="text" name="keterangan" id="keterangan" class="form-control" placeholder="Keterangan" />
                                         </div>
                                     </div>
@@ -194,12 +185,12 @@ f
                 </div>
     </div>
 	
-	<!-- detail data penghapusan -->
+	<!-- detail data perbaikan -->
 	<div class="modal fade" id="DetailModal" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Detail penghapusan</h4>
+                            <h4 class="modal-title">Detail perbaikan</h4>
                         </div>
                         <div class="modal-body">
 						
@@ -215,13 +206,13 @@ f
 							</tr>
 							 
 							<tr>
-								<td style="font-weight:bold;"> Dokumen</td>
+								<td style="font-weight:bold;"> Kerusakan</td>
 								<td> : </td>
-								<td> <p id="dokumendtl"> </p> </td>
+								<td> <p id="kerusakandtl"> </p> </td>
 								
-								<td style="font-weight:bold;"> Tanggal Hapus</td>
+								<td style="font-weight:bold;"> Tanggal Perbaikan</td>
 								<td> : </td>
-								<td> <p id="tglhapusdtl"> </p> </td> 
+								<td> <p id="tglperbaikandtl"> </p> </td> 
                             </tr>
                             
                             <tr>
@@ -232,14 +223,6 @@ f
 								<td style="font-weight:bold;"> Keterangan</td>
 								<td> : </td>
 								<td> <p id="keterangandtl"> </p> </td> 
-							</tr>
-
-							<tr>
-								<td style="font-weight:bold;"> Jumlah Barang</td>
-								<td> : </td>
-								<td colspan ="4"> <p id="jmlbarangdtl"> </p> </td>
-								
-							 
 							</tr>
 
 							<tr>
@@ -319,16 +302,15 @@ f
 	 function Show_Detail(id){ 
 		$("#DetailModal").modal({backdrop: 'static', keyboard: false,show:true});
 		$.ajax({
-			 url:"<?php echo base_url(); ?>penghapusan/get_data_edit/"+id,
+			 url:"<?php echo base_url(); ?>perbaikan/get_data_edit/"+id,
 			 type:"GET",
 			 dataType:"JSON", 
 			 success:function(result){  
                  var nf = new Intl.NumberFormat();
                  $("#namabarangdtl").html(result.nama_barang);
                  $("#kodebarangdtl").html(result.kode_barang);
-                 $("#tglhapusdtl").html(result.tgl_hapus); 
-                 $("#dokumendtl").html(result.dokumen); 
-				 $("#jmlbarangdtl").html(result.jml_barang); 
+                 $("#tglperbaikandtl").html(result.tgl_perbaikan); 
+                 $("#kerusakandtl").html(result.kerusakan); 
                  $("#ruangandtl").html(result.nama_ruangan); 
                  $("#keterangandtl").html(result.keterangan); 
 				 $("#imagedtl").attr("src","upload/"+result.image);
@@ -341,7 +323,7 @@ f
 		$("#defaultModal").modal('show');
  
 		$.ajax({
-			 url:"<?php echo base_url(); ?>penghapusan/get_data_edit/"+id,
+			 url:"<?php echo base_url(); ?>perbaikan/get_data_edit/"+id,
 			 type:"GET",
 			 dataType:"JSON", 
 			 success:function(result){  
@@ -350,10 +332,9 @@ f
 				 $("#id_barang").val(result.id_barang);
 				 $("#id_ruangan").val(result.id_ruangan); 
                  $("#nama_barang").val(result.nama_barang);
-				 $("#jml_barang").val(result.jml_barang);
                  $("#kode_barang").val(result.kode_barang);
-                 $("#tgl_hapus").val(result.tgl_hapus);
-                 $("#dokumen").val(result.dokumen);
+                 $("#tgl_perbaikan").val(result.tgl_perbaikan);
+                 $("#kerusakan").val(result.kerusakan);
                  $("#nama_ruangan").val(result.nama_ruangan);
                  $("#keterangan").val(result.keterangan); 
 				 $("#image").val(result.image);
@@ -373,7 +354,7 @@ f
         {
         // ajax delete data to database
         $.ajax({
-            url : "<?php echo base_url('penghapusan/hapus_data')?>/"+id,
+            url : "<?php echo base_url('perbaikan/hapus_data')?>/"+id,
             type: "GET",
             dataType: "JSON",
             success: function(data)
@@ -411,7 +392,7 @@ f
   
            
             $.ajax({
-             url:"<?php echo base_url(); ?>penghapusan/simpan_data",
+             url:"<?php echo base_url(); ?>perbaikan/simpan_data",
              type:"POST",
              data:formData,
              contentType:false,  
@@ -456,12 +437,12 @@ f
 		});
 		
 		$('#example').DataTable( {
-			"ajax": "<?php echo base_url(); ?>penghapusan/fetch_penghapusan",
-      'rowsGroup': [1] 
+			"ajax": "<?php echo base_url(); ?>perbaikan/fetch_perbaikan",
+      		'rowsGroup': [1] 
 		});
 	 
 	    $('#daftar_sales').DataTable( {
-            "ajax": "<?php echo base_url(); ?>penghapusan/fetch_kategori" 
+            "ajax": "<?php echo base_url(); ?>perbaikan/fetch_kategori" 
         });
  
 		 
