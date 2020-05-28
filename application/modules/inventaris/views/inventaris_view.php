@@ -10,7 +10,7 @@ f
                     <div class="card">
                         <div class="header">
                             <h2>
-								Perbaikan
+								Inventaris
                             </h2>
                             <br>
                             <a href="javascript:void(0);" id="addmodal" class="btn btn-primary waves-effect">  <i class="material-icons">add_circle</i>  Tambah Data </a>
@@ -23,9 +23,16 @@ f
 									<thead>  
 										<tr>
 											<th style="width:5%;">Nama Barang</th>
-                                            <th style="width:10%;">Kode Ruangan</th>  
-											<th style="width:10%;">Nama Ruangan</th> 
-											<th style="width:10%;">Tanggal Perbaikan</th>  
+                                            <th style="width:10%;">Merk Model</th>  
+											<th style="width:10%;">No Serial Pabrik</th> 
+											<th style="width:10%;">Ukuran</th>  
+											<th style="width:10%;">Bahan</th>  
+											<th style="width:10%;">Tahun Pembelian</th>  
+											<th style="width:10%;">No Kode Barang</th>  
+											<th style="width:10%;">Jumlah Barang</th> 
+											<th style="width:10%;">Harga Beli</th>  
+											<th style="width:10%;">Mutasi</th>  
+											<th style="width:10%;">Keterangan</th>  
 											<th style="width:15%;">Opsi</th> 
 										</tr>
 									</thead> 
@@ -51,58 +58,33 @@ f
                         </div>
                         <div class="modal-body">
                               <form method="post" id="user_form" enctype="multipart/form-data">   
-                                 <input type="hidden" name="id" id="id"> 
+                                 <input type="text" name="id" id="id"> 
 								 	<div class="input-group">
                                                 <div class="form-line">
                                                     <input type="text" name="nama_barang" id="nama_barang" class="form-control" required readonly="readonly" >
-                                                    <input type="hidden" name="id_barang" id="id_barang" required>
+                                                    <input type="text" name="id_barang" id="id_barang" required>
                                                     
                                                 </div>
                                                 <span class="input-group-addon">
                                                     <button type="button" onclick="PilihBarang();" class="btn btn-primary"> Pilih Barang.. </button>
                                                 </span>
                                     </div> 
-                                    <div class="form-group">
-                                        <div class="form-line">
-										<label>Tanggal Perbaikan</label>
-                                            <input type="text" name="tgl_perbaikan" id="tgl_perbaikan" class="datepicker form-control" placeholder="Tanggal Perbaikan" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-line">
-										<label>Kerusakan</label>
-                                            <input type="text" name="kerusakan" id="kerusakan" class="form-control" placeholder="Kerusakan" />
-                                        </div>
+                                    <div class="input-group">
+                                                <div class="form-line">
+                                                    <input type="text" name="nama_ruangan" id="nama_ruangan" class="form-control" required readonly="readonly" >
+                                                    <input type="text" name="id_ruangan" id="id_ruangan" required>
+                                                    
+                                                </div>
+                                                <span class="input-group-addon">
+                                                    <button type="button" onclick="PilihRuangan();" class="btn btn-primary"> Pilih Ruangan.. </button>
+                                                </span>
                                     </div>
                                     <div class="form-group">
                                         <div class="form-line">
 										<label>Keterangan</label>
                                             <input type="text" name="keterangan" id="keterangan" class="form-control" placeholder="Keterangan" />
                                         </div>
-                                    </div>
-                                    
-									<div class="input-group">
-                                                <div class="form-line">
-                                                    <input type="text" name="nama_ruangan" id="nama_ruangan" class="form-control" required readonly="readonly" >
-                                                    <input type="hidden" name="id_ruangan" id="id_ruangan" required>
-                                                    
-                                                </div>
-                                                <span class="input-group-addon">
-                                                    <button type="button" onclick="PilihRuangan();" class="btn btn-primary"> Pilih Ruangan.. </button>
-                                                </span>
-                                    </div> 
-									<div class="form-group">
-                                        <div class="form-line">
-										<label>Image</label> 
-											<input type="file" name="user_image" id="user_image" class="form-control" onchange="PreviewGambar(this);" placeholder="pegawai" />  
-                                        </div>
-										   <input type="hidden" name="image" id="image">
-                                    </div>
-                                    <br>
-                                    <img onerror="this.onerror=null;this.src='<?php echo base_url('upload/image_prev.jpg'); ?>';" id="image1" src="<?php echo base_url('upload/image_prev.jpg');?>" style="height: 300px;" alt="..." class="img-rounded img-responsive">
-                                    <br>
-								  
-
+                                    </div>  
 								    <button type="button" onclick="Simpan_Data();" class="btn btn-success waves-effect"> <i class="material-icons">save</i> Simpan</button>
 
                                     <button type="button" name="cancel" id="cancel" class="btn btn-danger waves-effect" onclick="javascript:Bersihkan_Form();" data-dismiss="modal"> <i class="material-icons">clear</i> Batal</button>
@@ -166,16 +148,16 @@ f
                                     <thead>
                                         <tr> 
                                    
-											<th style="width:95%;">Kode Barang</th>
-											<th style="width:95%;">Nama Barang</th>
-											<th style="width:95%;">Merk/Model</th>
-											<th style="width:95%;">No Serial Pabrik</th>
-											<th style="width:95%;">Ukuran</th>
-											<th style="width:95%;">Bahan</th>
-											<th style="width:95%;">Tahun Buat</th>
-											<th style="width:95%;">No Kode Barang</th>
-											<th style="width:95%;">Satuan</th>
-											<th style="width:95%;">Harga Beli</th> 
+											<th style="width:10%;">Kode Barang</th>
+											<th style="width:10%;">Nama Barang</th>
+											<th style="width:10%;">Merk/Model</th>
+											<th style="width:10%;">No Serial Pabrik</th>
+											<th style="width:10%;">Ukuran</th>
+											<th style="width:10%;">Bahan</th>
+											<th style="width:10%;">Tahun Buat</th>
+											<th style="width:10%;">No Kode Barang</th>
+											<th style="width:10%;">Satuan</th>
+											<th style="width:20%;">Harga Beli</th> 
                                         </tr>
                                     </thead> 
                                     <tbody id="daftar_barangx">
@@ -188,12 +170,12 @@ f
                 </div>
     </div>
 	
-	<!-- detail data perbaikan -->
+	<!-- detail data inventaris -->
 	<div class="modal fade" id="DetailModal" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Detail perbaikan</h4>
+                            <h4 class="modal-title">Detail inventaris</h4>
                         </div>
                         <div class="modal-body">
 						
@@ -213,9 +195,9 @@ f
 								<td> : </td>
 								<td> <p id="kerusakandtl"> </p> </td>
 								
-								<td style="font-weight:bold;"> Tanggal Perbaikan</td>
+								<td style="font-weight:bold;"> Tanggal inventaris</td>
 								<td> : </td>
-								<td> <p id="tglperbaikandtl"> </p> </td> 
+								<td> <p id="tglinventarisdtl"> </p> </td> 
                             </tr>
                             
                             <tr>
@@ -305,14 +287,14 @@ f
 	 function Show_Detail(id){ 
 		$("#DetailModal").modal({backdrop: 'static', keyboard: false,show:true});
 		$.ajax({
-			 url:"<?php echo base_url(); ?>perbaikan/get_data_edit/"+id,
+			 url:"<?php echo base_url(); ?>inventaris/get_data_edit/"+id,
 			 type:"GET",
 			 dataType:"JSON", 
 			 success:function(result){  
                  var nf = new Intl.NumberFormat();
                  $("#namabarangdtl").html(result.nama_barang);
                  $("#kodebarangdtl").html(result.kode_barang);
-                 $("#tglperbaikandtl").html(result.tgl_perbaikan); 
+                 $("#tglinventarisdtl").html(result.tgl_inventaris); 
                  $("#kerusakandtl").html(result.kerusakan); 
                  $("#ruangandtl").html(result.nama_ruangan); 
                  $("#keterangandtl").html(result.keterangan); 
@@ -326,7 +308,7 @@ f
 		$("#defaultModal").modal('show');
  
 		$.ajax({
-			 url:"<?php echo base_url(); ?>perbaikan/get_data_edit/"+id,
+			 url:"<?php echo base_url(); ?>inventaris/get_data_edit/"+id,
 			 type:"GET",
 			 dataType:"JSON", 
 			 success:function(result){  
@@ -336,7 +318,7 @@ f
 				 $("#id_ruangan").val(result.id_ruangan); 
                  $("#nama_barang").val(result.nama_barang);
                  $("#kode_barang").val(result.kode_barang);
-                 $("#tgl_perbaikan").val(result.tgl_perbaikan);
+                 $("#tgl_inventaris").val(result.tgl_inventaris);
                  $("#kerusakan").val(result.kerusakan);
                  $("#nama_ruangan").val(result.nama_ruangan);
                  $("#keterangan").val(result.keterangan); 
@@ -357,7 +339,7 @@ f
         {
         // ajax delete data to database
         $.ajax({
-            url : "<?php echo base_url('perbaikan/hapus_data')?>/"+id,
+            url : "<?php echo base_url('inventaris/hapus_data')?>/"+id,
             type: "GET",
             dataType: "JSON",
             success: function(data)
@@ -390,12 +372,12 @@ f
 		 var formData = new FormData($('#user_form')[0]); 
 
           
-         var foto = $('#image').val();
-		 var extension = $('#image').val().split('.').pop().toLowerCase();  
+        //  var foto = $('#image').val();
+		//  var extension = $('#image').val().split('.').pop().toLowerCase();  
   
            
             $.ajax({
-             url:"<?php echo base_url(); ?>perbaikan/simpan_data",
+             url:"<?php echo base_url(); ?>inventaris/simpan_data",
              type:"POST",
              data:formData,
              contentType:false,  
@@ -440,12 +422,11 @@ f
 		});
 		
 		$('#example').DataTable( {
-			"ajax": "<?php echo base_url(); ?>perbaikan/fetch_perbaikan",
-      		'rowsGroup': [1] 
+			"ajax": "<?php echo base_url(); ?>inventaris/fetch_inventaris"  
 		});
 	 
 	    $('#daftar_sales').DataTable( {
-            "ajax": "<?php echo base_url(); ?>perbaikan/fetch_kategori" 
+            "ajax": "<?php echo base_url(); ?>inventaris/fetch_kategori" 
         });
  
 		 

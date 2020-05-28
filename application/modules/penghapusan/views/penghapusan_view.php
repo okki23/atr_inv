@@ -99,7 +99,7 @@ f
                                     </div> 
 									<div class="form-group">
                                         <div class="form-line">
-											Image 
+										<label>Image</label> 
 											<input type="file" name="user_image" id="user_image" class="form-control" onchange="PreviewGambar(this);" placeholder="pegawai" />  
                                         </div>
 										   <input type="hidden" name="image" id="image">

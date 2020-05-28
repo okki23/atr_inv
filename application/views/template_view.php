@@ -183,18 +183,6 @@
 										<span>Pegawai</span>
 									</a>
 								</li>  
-								<!-- <li>
-									<a href="<?php echo base_url('jabatan'); ?>">
-										<i class="material-icons">dns</i>
-										<span>Jabatan</span>
-									</a>
-								</li>  
-								<li>
-									<a href="<?php echo base_url('divisi'); ?>">
-										<i class="material-icons">dns</i>
-										<span>Divisi</span>
-									</a>
-								</li>    -->
 								<li>
 									<a href="<?php echo base_url('user'); ?>">
 										<i class="material-icons">dns</i>
@@ -226,13 +214,39 @@
 										<i class="material-icons">dns</i>
 										<span>Perbaikan</span>
 									</a>
-								</li>  
+								</li>    
 								<li>
 									<a href="<?php echo base_url('inventaris'); ?>">
 										<i class="material-icons">dns</i>
 										<span>Inventaris</span>
 									</a>
-								</li>  
+								</li>    
+							</ul>
+						</li>  
+						<li>
+							<a href="javascript:void(0);" class="menu-toggle" >
+								<i class="material-icons">dns</i>
+								<span>Report</span>
+							</a>
+							<ul class="ml-menu">  
+								<li>
+									<a href="<?php echo base_url('report_item'); ?>">
+										<i class="material-icons">dns</i>
+										<span>Laporan Barang</span>
+									</a>
+								</li>
+								<li>
+									<a href="<?php echo base_url('report_mutasi'); ?>">
+										<i class="material-icons">dns</i>
+										<span>Laporan Mutasi</span>
+									</a>
+								</li>    
+								<li>
+									<a href="<?php echo base_url('rerport_inventaris'); ?>">
+										<i class="material-icons">dns</i>
+										<span>Laporan Inventaris</span>
+									</a>
+								</li>    
 							</ul>
 						</li>  
                 	</ul>
