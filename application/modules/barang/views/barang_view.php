@@ -23,9 +23,11 @@
   
 									<thead>
 										<tr> 
+											<th style="width:5%;">No</th>	
 											<th style="width:5%;">Kode Barang</th>
                                             <th style="width:5%;">Merk / Model</th>
-                                            <th style="width:5%;">Nama Barang</th>                                           
+                                            <th style="width:5%;">Nama Barang</th>    
+											<th style="width:5%;">Ruangan</th>                                       
                                             <th style="width:10%;">Opsi</th> 
 										</tr>
 									</thead> 
@@ -99,6 +101,16 @@
                                             <input type="text" name="harga_beli" id="harga_beli" class="form-control" placeholder="Harga Beli" />
                                         </div>
                                     </div> 
+									<div class="input-group">
+                                                <div class="form-line">
+                                                    <input type="text" name="nama_ruangan" id="nama_ruangan" class="form-control" required readonly="readonly" >
+                                                    <input type="hidden" name="id_ruangan" id="id_ruangan" required>
+                                                    
+                                                </div>
+                                                <span class="input-group-addon">
+                                                    <button type="button" onclick="PilihRuangan();" class="btn btn-primary"> Pilih Ruangan.. </button>
+                                                </span>
+                                    </div>
 
 								   <button type="button" onclick="Simpan_Data();" class="btn btn-success waves-effect"> <i class="material-icons">save</i> Simpan</button>
 
@@ -176,15 +188,73 @@
                                     <td>:</td>
                                     <td><div id="harga_belidtl"> </div></td>
                                 </tr> 
+									<tr>
+                                    <td>Ruangan</td>
+                                    <td>:</td>
+                                    <td><div id="namaruangandtl"> </div></td>
+                                </tr> 
                                 </table> 
                        </div> 
                     </div>
                 </div>
     </div> 
+	
+    <!-- modal cari ruangan -->
+    <div class="modal fade" id="PilihRuanganModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" > Pilih Ruangan </h4>
+                        </div>
+                        <div class="modal-body">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">X Tutup</button>
+
+                                <br>
+                                <hr>
+
+                                 <table width="100%" class="table table-bordered table-striped table-hover " id="daftar_ruangan" >
+  
+                                    <thead>
+                                        <tr> 
+                                   
+											<th style="width:95%;">Kode Ruangan</th>
+											<th style="width:95%;">Nama Ruangan</th>
+                                             
+                                        </tr>
+                                    </thead> 
+                                    <tbody id="daftar_ruanganx">
+
+                                </tbody>
+                                </table> 
+                       </div>
+                     
+                    </div>
+                </div>
+    </div>
+	
 
   
  
    <script type="text/javascript">  
+   	function PilihRuangan(){
+        $("#PilihRuanganModal").modal({backdrop: 'static', keyboard: false,show:true});
+    }
+	 
+    $('#daftar_ruangan').DataTable( {
+        "ajax": "<?php echo base_url(); ?>ruangan/fetch_ruangan" 
+    });
+
+    var daftar_ruangan = $('#daftar_ruangan').DataTable();
+     
+        $('#daftar_ruangan tbody').on('click', 'tr', function () {
+            
+            var content = daftar_ruangan.row(this).data()
+            console.log(content);
+            $("#nama_ruangan").val(content[0]);
+            $("#id_ruangan").val(content[3]);
+            $("#PilihRuanganModal").modal('hide');
+        } );
+	
     function Detail(id){
         $("#DetailModal").modal({backdrop: 'static', keyboard: false,show:true});
  
@@ -194,6 +264,7 @@
 			 dataType:"JSON", 
 			 success:function(result){  
 				 $("#kode_barangdtl").html(result.kode_barang);
+				 $("#namaruangandtl").html(result.nama_ruangan);
                  $("#nama_barangdtl").html(result.nama_barang);
                  $("#merk_modeldtl").html(result.merk_model); 
                  $("#no_serial_pabrikdtl").html(result.no_serial_pabrik);
@@ -219,7 +290,9 @@
 			 success:function(result){  
 				 $("#defaultModal").modal('show'); 
 				 $("#id").val(result.id);
-				 $("#kode_barang").val(result.kode_barang);
+				 $("#kode_barang").val(result.kode_barang); 
+				 $("#id_ruangan").val(result.id_ruangan);
+				 $("#nama_ruangan").val(result.nama_ruangan);
                  $("#nama_barang").val(result.nama_barang);
                  $("#merk_model").val(result.merk_model); 
                  $("#no_serial_pabrik").val(result.no_serial_pabrik);

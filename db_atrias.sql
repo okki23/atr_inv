@@ -11,7 +11,7 @@
  Target Server Version : 100411
  File Encoding         : 65001
 
- Date: 29/05/2020 07:32:54
+ Date: 29/05/2020 13:33:10
 */
 
 SET NAMES utf8mb4;
@@ -23,6 +23,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `m_barang`;
 CREATE TABLE `m_barang`  (
   `id` int(10) NOT NULL AUTO_INCREMENT,
+  `id_ruangan` int(11) NULL DEFAULT NULL,
   `kode_barang` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `nama_barang` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `merk_model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
@@ -40,7 +41,7 @@ CREATE TABLE `m_barang`  (
 -- ----------------------------
 -- Records of m_barang
 -- ----------------------------
-INSERT INTO `m_barang` VALUES (2, 'GHER834534', 'INDOMIE', 'INDOFOOD', '90345345359894', '100gr', 'Mie', '2001', NULL, '10', 'Pcs', '2000');
+INSERT INTO `m_barang` VALUES (2, 3, 'GHER834534', 'INDOMIE', 'INDOFOOD', '90345345359894', '100gr', 'Mie', '2001', NULL, '10', 'Pcs', '2000');
 
 -- ----------------------------
 -- Table structure for m_divisi
@@ -179,14 +180,16 @@ CREATE TABLE `t_inventaris`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_barang` int(11) NULL DEFAULT NULL,
   `id_ruangan` int(11) NULL DEFAULT NULL,
+  `kondisi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `keterangan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_inventaris
 -- ----------------------------
-INSERT INTO `t_inventaris` VALUES (1, 2, 3, 'sssss');
+INSERT INTO `t_inventaris` VALUES (1, 2, 3, NULL, 'sssss');
+INSERT INTO `t_inventaris` VALUES (3, 2, 3, 'ok', 'kkk');
 
 -- ----------------------------
 -- Table structure for t_mutasi

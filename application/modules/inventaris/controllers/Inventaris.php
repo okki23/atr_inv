@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Inventaris extends Parent_Controller {
 
 	var $nama_tabel = 't_inventaris';
-  	var $daftar_field = array('id','id_barang','id_ruangan','keterangan');
+  	var $daftar_field = array('id','id_barang','id_ruangan','keterangan','kondisi');
   	var $primary_key = 'id'; 
 	 
 	  public function __construct(){

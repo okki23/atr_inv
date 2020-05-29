@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_inventaris extends Parent_Model { 
    
 	var $nama_tabel = 't_inventaris';
-  	var $daftar_field = array('id','id_barang','id_ruangan','keterangan');
+  	var $daftar_field = array('id','id_barang','id_ruangan','keterangan','kondisi');
   	var $primary_key = 'id'; 
 	  
 	public function __construct(){
@@ -38,7 +38,7 @@ class M_inventaris extends Parent_Model {
 					$sub_array[] = $row->no_kode_barang;   
 					$sub_array[] = $row->jumlah_barang;  
 					$sub_array[] = $row->harga_beli;   
-					$sub_array[] = $row->ruangan_asal.' - '.$row->ruangan_tujuan;   
+					$sub_array[] = $row->kondisi;
 					$sub_array[] = $row->keterangan;   
 					$sub_array[] = '<a href="javascript:void(0)" class="btn btn-warning btn-xs waves-effect" id="edit" onclick="Ubah_Data('.$row->id.');" > <i class="material-icons">create</i> Ubah </a> 
 									&nbsp; <a href="javascript:void(0)" id="delete" class="btn btn-danger btn-xs waves-effect" onclick="Hapus_Data('.$row->id.');" > <i class="material-icons">delete</i> Hapus </a>';  

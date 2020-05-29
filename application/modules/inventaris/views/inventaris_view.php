@@ -31,7 +31,7 @@ f
 											<th style="width:10%;">No Kode Barang</th>  
 											<th style="width:10%;">Jumlah Barang</th> 
 											<th style="width:10%;">Harga Beli</th>  
-											<th style="width:10%;">Mutasi</th>  
+											<th style="width:10%;">Kondisi</th>  
 											<th style="width:10%;">Keterangan</th>  
 											<th style="width:15%;">Opsi</th> 
 										</tr>
@@ -58,11 +58,11 @@ f
                         </div>
                         <div class="modal-body">
                               <form method="post" id="user_form" enctype="multipart/form-data">   
-                                 <input type="text" name="id" id="id"> 
+                                 <input type="hidden" name="id" id="id"> 
 								 	<div class="input-group">
                                                 <div class="form-line">
                                                     <input type="text" name="nama_barang" id="nama_barang" class="form-control" required readonly="readonly" >
-                                                    <input type="text" name="id_barang" id="id_barang" required>
+                                                    <input type="hidden" name="id_barang" id="id_barang" required>
                                                     
                                                 </div>
                                                 <span class="input-group-addon">
@@ -72,7 +72,7 @@ f
                                     <div class="input-group">
                                                 <div class="form-line">
                                                     <input type="text" name="nama_ruangan" id="nama_ruangan" class="form-control" required readonly="readonly" >
-                                                    <input type="text" name="id_ruangan" id="id_ruangan" required>
+                                                    <input type="hidden" name="id_ruangan" id="id_ruangan" required>
                                                     
                                                 </div>
                                                 <span class="input-group-addon">
@@ -80,6 +80,12 @@ f
                                                 </span>
                                     </div>
                                     <div class="form-group">
+                                        <div class="form-line">
+										<label>Kondisi</label>
+                                            <input type="text" name="kondisi" id="kondisi" class="form-control" placeholder="Kondisi" />
+                                        </div>
+                                    </div>  
+								    <div class="form-group">
                                         <div class="form-line">
 										<label>Keterangan</label>
                                             <input type="text" name="keterangan" id="keterangan" class="form-control" placeholder="Keterangan" />
@@ -232,6 +238,7 @@ f
                  var nf = new Intl.NumberFormat();
                  $("#namabarangdtl").html(result.nama_barang);
                  $("#kodebarangdtl").html(result.kode_barang);
+				 $("#kondisidtl").html(result.kondisi);
                  $("#tglinventarisdtl").html(result.tgl_inventaris); 
                  $("#kerusakandtl").html(result.kerusakan); 
                  $("#ruangandtl").html(result.nama_ruangan); 
@@ -255,6 +262,7 @@ f
 				 $("#id_barang").val(result.id_barang);
 				 $("#id_ruangan").val(result.id_ruangan); 
                  $("#nama_barang").val(result.nama_barang);
+				 $("#kondisi").val(result.kondisi);
                  $("#kode_barang").val(result.kode_barang);
                  $("#tgl_inventaris").val(result.tgl_inventaris);
                  $("#kerusakan").val(result.kerusakan);

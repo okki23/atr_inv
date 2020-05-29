@@ -13,15 +13,18 @@ class M_barang extends Parent_Model {
 	}
   
 	public function fetch_barang(){
-			$sql = $this->db->get($this->nama_tabel)->result();
+			$sql = $this->db->query('select a.*,b.kode_ruangan,b.nama_ruangan from m_barang a
+			left join m_ruangan b on b.id = a.id_ruangan')->result();
 			$data = array();  
 			$no = 1;
 		foreach($sql as $row)  {  
 			$sub_array = array();  
 	
+			$sub_array[] = $no;  
 			$sub_array[] = $row->kode_barang;  
 			$sub_array[] = $row->merk_model;  
 			$sub_array[] = $row->nama_barang; 
+			$sub_array[] = $row->nama_ruangan; 
 			$sub_array[] = '<a href="javascript:void(0)" class="btn btn-default btn-xs waves-effect" id="edit" onclick="Detail('.$row->id.');" > <i class="material-icons">aspect_ratio</i> Detail </a>  &nbsp; 
 			<a href="javascript:void(0)" class="btn btn-warning btn-xs waves-effect" id="edit" onclick="Ubah_Data('.$row->id.');" > <i class="material-icons">create</i> Ubah </a>  &nbsp; 
 			<a href="javascript:void(0)" id="delete" class="btn btn-danger btn-xs waves-effect" onclick="Hapus_Data('.$row->id.');" > <i class="material-icons">delete</i> Hapus </a>  &nbsp;';  

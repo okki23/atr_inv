@@ -38,7 +38,8 @@ class Barang extends Parent_Controller {
 	 
 	public function get_data_edit(){
 		$id = $this->uri->segment(3);
-		$sql = $this->db->where('id',$id)->get($this->nama_tabel)->row();  
+		$sql = $this->db->query('select a.*,b.kode_ruangan,b.nama_ruangan from m_barang a
+		left join m_ruangan b on b.id = a.id_ruangan where a.id = "'.$id.'" ')->row();  
 		echo json_encode($sql,TRUE);
 	}
 	 
