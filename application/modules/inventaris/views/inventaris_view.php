@@ -169,69 +169,7 @@ f
                     </div>
                 </div>
     </div>
-	
-	<!-- detail data inventaris -->
-	<div class="modal fade" id="DetailModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Detail inventaris</h4>
-                        </div>
-                        <div class="modal-body">
-						
-						<table class="table table-responsive">
-                        <tr>
-								<td style="font-weight:bold;"> Kode Barang</td>
-								<td> : </td>
-								<td> <p id="kodebarangdtl"> </p> </td>
-								
-								<td style="font-weight:bold;"> Nama Barang</td>
-								<td> : </td>
-								<td> <p id="namabarangdtl"> </p> </td> 
-							</tr>
-							 
-							<tr>
-								<td style="font-weight:bold;"> Kerusakan</td>
-								<td> : </td>
-								<td> <p id="kerusakandtl"> </p> </td>
-								
-								<td style="font-weight:bold;"> Tanggal inventaris</td>
-								<td> : </td>
-								<td> <p id="tglinventarisdtl"> </p> </td> 
-                            </tr>
-                            
-                            <tr>
-								<td style="font-weight:bold;"> Ruangan</td>
-								<td> : </td>
-								<td> <p id="ruangandtl"> </p> </td>
-								
-								<td style="font-weight:bold;"> Keterangan</td>
-								<td> : </td>
-								<td> <p id="keterangandtl"> </p> </td> 
-							</tr>
-
-							<tr>
-								<td style="font-weight:bold;"> Image  </td> 
-								<td colspan="4">  : </td> 
-							</tr> 
-							<tr>
-								<td colspan="6" align="center">  
-								<img src="" class="img responsive" style="width:50%; height: 50%;" id="imagedtl">
-								</td>
-							</tr>
-							  
-						 
-							 <div class="modal-footer">
-							  <button type="button" class="btn btn-danger" data-dismiss="modal"> X Tutup </button>
-							 </div>
-						</table>
-                           
-					   </div>
-                     
-                    </div>
-                </div>
-    </div>
-			
+	 
  
    <script type="text/javascript">
 	function PilihRuangan(){

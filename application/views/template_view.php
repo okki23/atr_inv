@@ -242,7 +242,7 @@
 									</a>
 								</li>    
 								<li>
-									<a href="<?php echo base_url('rerport_inventaris'); ?>">
+									<a href="<?php echo base_url('report_inventaris'); ?>">
 										<i class="material-icons">dns</i>
 										<span>Laporan Inventaris</span>
 									</a>

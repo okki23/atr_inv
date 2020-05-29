@@ -11,7 +11,7 @@
  Target Server Version : 100411
  File Encoding         : 65001
 
- Date: 29/05/2020 06:38:52
+ Date: 29/05/2020 07:32:54
 */
 
 SET NAMES utf8mb4;
@@ -123,12 +123,14 @@ CREATE TABLE `m_ruangan`  (
   `kode_ruangan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `nama_ruangan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of m_ruangan
 -- ----------------------------
 INSERT INTO `m_ruangan` VALUES (3, '98JD', 'MELATI');
+INSERT INTO `m_ruangan` VALUES (4, 'JKRN', 'MAWAR');
+INSERT INTO `m_ruangan` VALUES (5, 'JK99', 'RAMPAI');
 
 -- ----------------------------
 -- Table structure for m_user
