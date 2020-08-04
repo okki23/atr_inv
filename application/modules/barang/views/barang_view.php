@@ -23,9 +23,11 @@
   
 									<thead>
 										<tr> 
-											<th style="width:5%;">Kategori Barang</th>
-                                            <th style="width:5%;">Sub Kategori Barang</th>
-                                            <th style="width:5%;">Nama Barang</th>                                           
+											<th style="width:5%;">No</th>	
+											<th style="width:5%;">Kode Barang</th>
+                                            <th style="width:5%;">Merk / Model</th>
+                                            <th style="width:5%;">Nama Barang</th>    
+											<th style="width:5%;">Ruangan</th>                                       
                                             <th style="width:10%;">Opsi</th> 
 										</tr>
 									</thead> 
@@ -34,14 +36,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
-         
-
+            </div> 
 
         </div>
-    </section>
+    </section> 
 
-   
 	<!-- form tambah dan ubah data -->
 	<div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
@@ -50,37 +49,13 @@
                             <h4 class="modal-title" id="defaultModalLabel">Form Tambah Data</h4>
                         </div>
                         <div class="modal-body">
-                              <form method="post" id="user_form" enctype="multipart/form-data">   
-                                 
-                                    <input type="hidden" name="id" id="id"> 
-                                    <div class="input-group">
-                                                <div class="form-line">
-                                                    <input type="text" name="nama_kategori" id="nama_kategori" class="form-control" readonly="readonly" >
-                                                    <input type="hidden" name="id_kategori" id="id_kategori" readonly="readonly" >
-                                                    
-                                                </div>
-                                                <span class="input-group-addon">
-                                                    <button type="button" onclick="CariKategori();" class="btn btn-primary"> Pilih Kategori... </button>
-                                                </span>
-                                    </div>
-
-                                    <div class="input-group">
-                                                <div class="form-line">
-                                                    <input type="text" name="nama_sub_kategori" id="nama_sub_kategori" class="form-control" readonly="readonly" >
-                                                    <input type="hidden" name="id_sub_kategori" id="id_sub_kategori" readonly="readonly" >
-                                                    
-                                                </div>
-                                                <span class="input-group-addon">
-                                                    <button type="button" onclick="CariSubKategori();" class="btn btn-primary"> Pilih Sub Kategori... </button>
-                                                </span>
-                                    </div>
-
-                                	<div class="form-group">
+                              <form method="post" id="user_form" enctype="multipart/form-data">    
+									<input type="hidden" name="id" id="id">  
+                                    <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="period" id="period" class="datepickerperiod form-control" placeholder="Period" />
+                                            <input type="text" name="kode_barang" id="kode_barang" class="datepicker form-control" placeholder="Kode Barang" />
                                         </div>
-                                    </div>
-                                    
+                                    </div> 
                                     <div class="form-group">
                                         <div class="form-line">
                                             <input type="text" name="nama_barang" id="nama_barang" class="form-control" placeholder="Nama Barang" />
@@ -88,20 +63,54 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="qty_jkt" id="qty_jkt" class="form-control" placeholder="Qty Jakarta" />
+                                            <input type="text" name="merk_model" id="merk_model" class="form-control" placeholder="Merk Model" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="qty_subang" id="qty_subang" class="form-control" placeholder="Qty Subang" />
+                                            <input type="text" name="no_serial_pabrik" id="no_serial_pabrik" class="form-control" placeholder="No Serial Pabrik" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" name="keterangan" id="keterangan" class="form-control" placeholder="Keterangan" />
+                                            <input type="text" name="ukuran" id="ukuran" class="form-control" placeholder="Ukuran" />
                                         </div>
                                     </div>
-                                     
+									<div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="bahan" id="bahan" class="form-control" placeholder="Bahan" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="tahun_buat" id="tahun_buat" class="form-control" placeholder="Tahun Buat" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="jumlah_barang" id="jumlah_barang" class="form-control" placeholder="Jumlah Barang" />
+                                        </div>
+                                    </div>
+									<div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="satuan_barang" id="satuan_barang" class="form-control" placeholder="Satuan Barang" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="harga_beli" id="harga_beli" class="form-control" placeholder="Harga Beli" />
+                                        </div>
+                                    </div> 
+									<div class="input-group">
+                                                <div class="form-line">
+                                                    <input type="text" name="nama_ruangan" id="nama_ruangan" class="form-control" required readonly="readonly" >
+                                                    <input type="hidden" name="id_ruangan" id="id_ruangan" required>
+                                                    
+                                                </div>
+                                                <span class="input-group-addon">
+                                                    <button type="button" onclick="PilihRuangan();" class="btn btn-primary"> Pilih Ruangan.. </button>
+                                                </span>
+                                    </div>
 
 								   <button type="button" onclick="Simpan_Data();" class="btn btn-success waves-effect"> <i class="material-icons">save</i> Simpan</button>
 
@@ -111,72 +120,7 @@
                      
                     </div>
                 </div>
-    </div>
-
-
-
-    <!-- modal cari kategori -->
-    <div class="modal fade" id="CariKategoriModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" >Cari Kategori</h4>
-                        </div>
-                        <div class="modal-body">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">X Tutup</button>
-
-                                <br>
-                                <hr>
-
-                                 <table width="100%" class="table table-bordered table-striped table-hover " id="daftar_kategori" >
-  
-                                    <thead>
-                                        <tr>  
-                                            <th style="width:98%;">Kategori </th> 
-                                         </tr>
-                                    </thead> 
-                                    <tbody id="daftar_kategorix">
-
-                                </tbody>
-                                </table> 
-                       </div>
-                     
-                    </div>
-                </div>
-    </div>
-
-
-    <!-- modal cari subkategori -->
-    <div class="modal fade" id="CariSubKategoriModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" >Cari Sub Kategori</h4>
-                        </div>
-                        <div class="modal-body">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">X Tutup</button>
-
-                                <br>
-                                <hr>
-
-                                 <table width="100%" class="table table-bordered table-striped table-hover " id="tabel_sub_kategori" > 
-                                    <thead>
-                                        <tr>  
-                                            <th style="width:15%;">Nama Sub Kategori</th> 
-                                            <th style="width:15%;">Action</th> 
-                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        
-                                    </tbody>  
-                                </table>  
-                       </div>
-                     
-                    </div>
-                </div>
-    </div>
-
-    
+    </div> 
      <!-- modal detail -->
      <div class="modal fade" id="DetailModal" tabindex="-1" role="dialog">
                 <div class="modal-dialog modal-lg" role="document">
@@ -190,53 +134,127 @@
                                 <hr>
                                 <table class="table table-bordered table-hovered">
                                 <tr>
+                                    <td>Kode Barang</td>
+                                    <td>:</td>
+                                    <td><div id="kode_barangdtl"> </div></td>
+                                </tr>
+								<tr>
                                     <td>Nama Barang</td>
                                     <td>:</td>
                                     <td><div id="nama_barangdtl"> </div></td>
                                 </tr>
                                 <tr>
-                                    <td>Kategori Barang</td>
+                                    <td>Merk Model</td>
                                     <td>:</td>
-                                    <td><div id="nama_kategoridtl"> </div></td>
+                                    <td><div id="merk_modeldtl"> </div></td>
                                 </tr>
                                 <tr>
-                                    <td>Sub Kategori Barang</td>
+                                    <td>No Serial Pabrik</td>
                                     <td>:</td>
-                                    <td><div id="nama_sub_kategoridtl"> </div></td>
+                                    <td><div id="no_serial_pabrikdtl"> </div></td>
                                 </tr>
                                 <tr>
-                                    <td>Qty Jakarta</td>
+                                    <td>Ukuran</td>
                                     <td>:</td>
-                                    <td><div id="qty_jktdtl"> </div></td>
+                                    <td><div id="ukurandtl"> </div></td>
                                 </tr>
                                 <tr>
-                                    <td>Qty Subang</td>
+                                    <td>Bahan</td>
                                     <td>:</td>
-                                    <td><div id="qty_subangdtl"> </div></td>
+                                    <td><div id="bahandtl"> </div></td>
                                 </tr>
                                 <tr>
-                                    <td>Keterangan</td>
+                                    <td>Tahun Buat</td>
                                     <td>:</td>
-                                    <td><div id="keterangandtl"> </div></td>
+                                    <td><div id="tahun_buatdtl"> </div></td>
                                 </tr>
-                                
-                                </table>
-                                 
+								<tr>
+                                    <td>No Kode Barang</td>
+                                    <td>:</td>
+                                    <td><div id="no_kode_barangdtl"> </div></td>
+                                </tr>
+								<tr>
+                                    <td>Jumlah Barang</td>
+                                    <td>:</td>
+                                    <td><div id="jumlah_barangdtl"> </div></td>
+                                </tr>
+								<tr>
+                                    <td>Satuan Barang</td>
+                                    <td>:</td>
+                                    <td><div id="satuan_barangdtl"> </div></td>
+                                </tr>
+								<tr>
+                                    <td>Harga Beli</td>
+                                    <td>:</td>
+                                    <td><div id="harga_belidtl"> </div></td>
+                                </tr> 
+									<tr>
+                                    <td>Ruangan</td>
+                                    <td>:</td>
+                                    <td><div id="namaruangandtl"> </div></td>
+                                </tr> 
+                                </table> 
+                       </div> 
+                    </div>
+                </div>
+    </div> 
+	
+    <!-- modal cari ruangan -->
+    <div class="modal fade" id="PilihRuanganModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" > Pilih Ruangan </h4>
+                        </div>
+                        <div class="modal-body">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">X Tutup</button>
+
+                                <br>
+                                <hr>
+
+                                 <table width="100%" class="table table-bordered table-striped table-hover " id="daftar_ruangan" >
+  
+                                    <thead>
+                                        <tr> 
+                                   
+											<th style="width:95%;">Kode Ruangan</th>
+											<th style="width:95%;">Nama Ruangan</th>
+                                             
+                                        </tr>
+                                    </thead> 
+                                    <tbody id="daftar_ruanganx">
+
+                                </tbody>
+                                </table> 
                        </div>
                      
                     </div>
                 </div>
     </div>
-
-
-
- 
+	
 
   
  
-   <script type="text/javascript"> 
-     
+   <script type="text/javascript">  
+   	function PilihRuangan(){
+        $("#PilihRuanganModal").modal({backdrop: 'static', keyboard: false,show:true});
+    }
+	 
+    $('#daftar_ruangan').DataTable( {
+        "ajax": "<?php echo base_url(); ?>ruangan/fetch_ruangan" 
+    });
 
+    var daftar_ruangan = $('#daftar_ruangan').DataTable();
+     
+        $('#daftar_ruangan tbody').on('click', 'tr', function () {
+            
+            var content = daftar_ruangan.row(this).data()
+            console.log(content);
+            $("#nama_ruangan").val(content[0]);
+            $("#id_ruangan").val(content[3]);
+            $("#PilihRuanganModal").modal('hide');
+        } );
+	
     function Detail(id){
         $("#DetailModal").modal({backdrop: 'static', keyboard: false,show:true});
  
@@ -244,89 +262,23 @@
 			 url:"<?php echo base_url(); ?>barang/get_data_edit/"+id,
 			 type:"GET",
 			 dataType:"JSON", 
-			 success:function(result){ 
-                  
-				 //$("#DetailModal").modal('show'); 
-				 $("#nama_barangdtl").html(result.nama_barang);
-                 $("#nama_kategoridtl").html(result.nama_kategori);
-                 $("#nama_sub_kategoridtl").html(result.nama_sub_kategori); 
-                 $("#qty_jktdtl").html(result.qty_jkt);
-                 $("#qty_subangdtl").html(result.qty_subang);
-                 $("#keterangandtl").html(result.keterangan);  
-                
+			 success:function(result){  
+				 $("#kode_barangdtl").html(result.kode_barang);
+				 $("#namaruangandtl").html(result.nama_ruangan);
+                 $("#nama_barangdtl").html(result.nama_barang);
+                 $("#merk_modeldtl").html(result.merk_model); 
+                 $("#no_serial_pabrikdtl").html(result.no_serial_pabrik);
+                 $("#ukurandtl").html(result.ukuran);
+                 $("#bahandtl").html(result.bahan); 
+				 $("#tahun_buatdtl").html(result.tahun_buat);
+                 $("#no_kode_barangdtl").html(result.no_kode_barang);
+                 $("#jumlah_barangdtl").html(result.jumlah_barang); 
+                 $("#satuan_barangdtl").html(result.satuan_barang);
+                 $("#harga_belidtl").html(result.harga_beli); 
 			 }
 		 });
     } 
-   
-
-    function GetDataSubKategori(id){
-        console.log(id);
-        $.get("<?php echo base_url('barang/fetch_nama_sub_kategori_row/'); ?>"+id,function(result){
-            console.log(result);
-            var parse = JSON.parse(result);
-            $("#id_sub_kategori").val(id);
-            $("#nama_sub_kategori").val(parse.nama_sub_kategori);
-            $("#CariSubKategoriModal").modal('hide');
-        }); 
-    }
-
- 
-    function CariSubKategori(){
-        $("#CariSubKategoriModal").modal({backdrop: 'static', keyboard: false,show:true});
-
-         var id_kategori = $("#id_kategori").val();
-        
-        $('#tabel_sub_kategori').DataTable({
-            "processing" : true,
-            "ajax" : {
-                "url" : "<?php echo base_url('barang/fetch_sub_kategori_barang'); ?>",
-                "data":{id_kategori},
-                "type":"POST",
-                dataSrc : '',
-
-            },
- 
-
-            "columns" : [ {
-                "data" : "nama"
-            },{
-                "data" : "action"
-            }],
-
-            "rowReorder": {
-                "update": false
-            },
-
-            "destroy":true,
-        });
-    
- 
-    } 
-
-
-
-    // cari direktorat
-    $('#daftar_kategori').DataTable( {
-            "ajax": "<?php echo base_url(); ?>kategori_barang/fetch_kategori_barang"           
-    }); 
-
-    function CariKategori(){
-        $("#CariKategoriModal").modal({backdrop: 'static', keyboard: false,show:true});
-    } 
-   
-        
-        var daftar_kategori = $('#daftar_kategori').DataTable();
-     
-        $('#daftar_kategori tbody').on('click', 'tr', function () {
-            
-            var content = daftar_kategori.row(this).data()
-            console.log(content);
-            $("#nama_kategori").val(content[0]);
-            $("#id_kategori").val(content[2]);
-            $("#CariKategoriModal").modal('hide');
-        } );
-
-
+      
 	 function Ubah_Data(id){
 		$("#defaultModalLabel").html("Form Ubah Data");
 		$("#defaultModal").modal('show');
@@ -338,16 +290,19 @@
 			 success:function(result){  
 				 $("#defaultModal").modal('show'); 
 				 $("#id").val(result.id);
+				 $("#kode_barang").val(result.kode_barang); 
+				 $("#id_ruangan").val(result.id_ruangan);
+				 $("#nama_ruangan").val(result.nama_ruangan);
                  $("#nama_barang").val(result.nama_barang);
-                 $("#qty_jkt").val(result.qty_jkt);
-                 $("#qty_subang").val(result.qty_subang);
-                 $("#qty").val(result.qty);
-                 $("#keterangan").val(result.keterangan); 
-                 $("#id_kategori").val(result.id_kategori);
-                 $("#nama_kategori").val(result.nama_kategori); 
-                 $("#id_sub_kategori").val(result.id_sub_kategori);
-                 $("#nama_sub_kategori").val(result.nama_sub_kategori); 
-                  
+                 $("#merk_model").val(result.merk_model); 
+                 $("#no_serial_pabrik").val(result.no_serial_pabrik);
+                 $("#ukuran").val(result.ukuran);
+                 $("#bahan").val(result.bahan); 
+				 $("#tahun_buat").val(result.tahun_buat);
+                 $("#no_kode_barang").val(result.no_kode_barang);
+                 $("#jumlah_barang").val(result.jumlah_barang); 
+                 $("#satuan_barang").val(result.satuan_barang);
+                 $("#harga_beli").val(result.harga_beli); 
 			 }
 		 });
 	 }
@@ -388,8 +343,7 @@
    
     }
 	}
-    
-      
+     
   
 	function Simpan_Data(){
 		//setting semua data dalam form dijadikan 1 variabel 
@@ -434,17 +388,8 @@
             $("#defaultModalLabel").html("Form Tambah Data");
 		});
 
-        var dateObj = new Date();
-        var month = dateObj.getUTCMonth() + 1; //months from 1-12
-        var day = dateObj.getUTCDate();
-        var year = dateObj.getUTCFullYear();
- 
-		 
-		$('#example').append('<caption style="caption-side: top">   </caption>');
-		$('#example').DataTable({
-             
-			"ajax": "<?php echo base_url(); ?>barang/fetch_barang", 
-            'rowsGroup': [0,1] ,
+		$('#example').DataTable({             
+			"ajax": "<?php echo base_url(); ?>barang/fetch_barang"
 		});
 
 

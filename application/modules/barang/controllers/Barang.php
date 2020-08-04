@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Barang extends Parent_Controller {
   
   var $nama_tabel = 'm_barang';
-  var $daftar_field = array('id','nama_barang','id_kategori','id_sub_kategori','qty_subang','qty_jkt','keterangan');
+  var $daftar_field = array('id','kode_barang', 'nama_barang','merk_model', 'no_serial_pabrik', 'ukuran', 'bahan', 'tahun_buat', 'no_kode_barang', 'jumlah_barang', 'satuan_barang', 'harga_beli');
   var $primary_key = 'id'; 
   
  	public function __construct(){
@@ -30,73 +30,17 @@ class Barang extends Parent_Controller {
        echo json_encode($getdata);   
 	}
 
-	public function fetch_barang_front(){  
-		$getdata = $this->m_barang->fetch_barang_front();
+	public function fetch_barang_all(){  
+		$getdata = $this->m_barang->fetch_barang_all();
 		echo json_encode($getdata);   
 	 }
-
-
-	public function item_list(){  
-       
-		$no_transaksix =  $this->input->post('no_transaksix');
-		 
-		  $sql = "select a.*,b.nama_kategori,c.nama_sub_kategori from m_barang a
-		left join m_kategori b on b.id = a.id_kategori
-		left join m_sub_kategori c on c.id = a.id_sub_kategori";
-		  $exsql = $this->db->query($sql)->result();
-					
-		  $dataparse = array();  
-			 foreach ($exsql as $key => $value) {  
-				  $sub_array['nama_kategori'] = $value->nama_kategori;
-				  $sub_array['nama_sub_kategori'] = $value->nama_sub_kategori;  
-				  $sub_array['nama_barang'] = $value->nama_barang;
-				 
-				  $sub_array['action'] =  "<button typpe='button' onclick='GetItemList(".$value->id.");' class = 'btn btn-primary'> <i class='material-icons'>shopping_cart</i> Pilih </button>";  
-	 
-				 array_push($dataparse,$sub_array); 
-			  }  
-		 
-		  echo json_encode($dataparse);
-   
-	  }
-	public function fetch_item_list(){
-		$id = $this->uri->segment(3);
-		$sql = $this->db->where('id',$id)->get('m_barang')->row();
-	    echo json_encode($sql,TRUE);
-	}
-	public function fetch_sub_kategori_barang(){  
-  	   
-		$id_kategori =  $this->input->post('id_kategori');
-		$sql = "select * from m_sub_kategori where id_kategori = '".$id_kategori."' ";
   
-	  $getdata = $this->db->query($sql)->result();
-	  $return_arr = array();
-
-	  foreach ($getdata as $key => $value) {
-		   $row_array['nama'] = $value->nama_sub_kategori; 
-		   $row_array['action'] = "<button typpe='button' onclick='GetDataSubKategori(".$value->id.");' class = 'btn btn-warning'> Pilih </button>";  
-		   array_push($return_arr,$row_array);
-	  }
-	  echo json_encode($return_arr);
-
-	 }  
-
-	 public function fetch_nama_sub_kategori_row(){
-		$id = $this->uri->segment(3);
-		$data = $this->db->where('id',$id)->get('m_sub_kategori')->row();
-		echo json_encode($data);
-	}
-
-
 	 
 	public function get_data_edit(){
 		$id = $this->uri->segment(3);
-		$sql = "select a.*,b.nama_kategori,c.nama_sub_kategori from m_barang a
-		left join m_kategori b on b.id = a.id_kategori
-		left join m_sub_kategori c on c.id = a.id_sub_kategori where a.id = '".$id."' ";
-
-		$get = $this->db->query($sql)->row();
-		echo json_encode($get,TRUE);
+		$sql = $this->db->query('select a.*,b.kode_ruangan,b.nama_ruangan from m_barang a
+		left join m_ruangan b on b.id = a.id_ruangan where a.id = "'.$id.'" ')->row();  
+		echo json_encode($sql,TRUE);
 	}
 	 
 	public function hapus_data(){

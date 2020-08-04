@@ -19,8 +19,10 @@ class M_login extends Parent_Model {
 	}
 
 	public function get_profile($username){
-		$sql = $this->db->query("select a.*,b.nama,b.divisi from m_user a
+		$sql = $this->db->query("select a.*,b.nama,c.nama_divisi,d.nama_jabatan from m_user a
 		left join m_pegawai b on b.id = a.id_pegawai 
+		left join m_divisi c on c.id = b.id_divisi
+		left join m_jabatan d on d.id = b.id_jabatan
 		where a.username = '".$username."' ")->row();
 		return $sql;
 	} 

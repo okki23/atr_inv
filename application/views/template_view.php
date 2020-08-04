@@ -160,29 +160,93 @@
 							</a>
 							<ul class="ml-menu"> 
 								<li>
-									<a href="<?php echo base_url('gedung'); ?>" target="_blank">
+									<a href="<?php echo base_url('gedung'); ?>">
 										<i class="material-icons">dns</i>
 										<span>Gedung</span>
 									</a>
 								</li>
 								<li>
-									<a href="<?php echo base_url('ruangan'); ?>" target="_blank">
+									<a href="<?php echo base_url('ruangan'); ?>">
 										<i class="material-icons">dns</i>
 										<span>Ruangan</span>
 									</a>
 								</li>
 								<li>
-									<a href="<?php echo base_url('barang'); ?>" target="_blank">
+									<a href="<?php echo base_url('barang'); ?>">
 										<i class="material-icons">dns</i>
 										<span>Barang</span>
 									</a>
 								</li>  
 								<li>
-									<a href="<?php echo base_url('pegawai'); ?>" target="_blank">
+									<a href="<?php echo base_url('pegawai'); ?>">
 										<i class="material-icons">dns</i>
 										<span>Pegawai</span>
 									</a>
 								</li>  
+								<li>
+									<a href="<?php echo base_url('user'); ?>">
+										<i class="material-icons">dns</i>
+										<span>User</span>
+									</a>
+								</li>   
+							</ul>
+						</li>
+						<li>
+							<a href="javascript:void(0);" class="menu-toggle" >
+								<i class="material-icons">dns</i>
+								<span>Transaksi</span>
+							</a>
+							<ul class="ml-menu"> 
+								<li>
+									<a href="<?php echo base_url('mutasi'); ?>">
+										<i class="material-icons">dns</i>
+										<span>Mutasi</span>
+									</a>
+								</li>
+								<li>
+									<a href="<?php echo base_url('penghapusan'); ?>">
+										<i class="material-icons">dns</i>
+										<span>Penghapusan</span>
+									</a>
+								</li>
+								<li>
+									<a href="<?php echo base_url('perbaikan'); ?>">
+										<i class="material-icons">dns</i>
+										<span>Perbaikan</span>
+									</a>
+								</li>    
+								<li>
+									<a href="<?php echo base_url('inventaris'); ?>">
+										<i class="material-icons">dns</i>
+										<span>Inventaris</span>
+									</a>
+								</li>    
+							</ul>
+						</li>  
+						<li>
+							<a href="javascript:void(0);" class="menu-toggle" >
+								<i class="material-icons">dns</i>
+								<span>Report</span>
+							</a>
+							<ul class="ml-menu">  
+								<li>
+									<a href="<?php echo base_url('report_item'); ?>">
+										<i class="material-icons">dns</i>
+										<span>Laporan Barang</span>
+									</a>
+								</li>
+								<li>
+									<a href="<?php echo base_url('report_mutasi'); ?>">
+										<i class="material-icons">dns</i>
+										<span>Laporan Mutasi</span>
+									</a>
+								</li>    
+								<li>
+									<a href="<?php echo base_url('report_inventaris'); ?>">
+										<i class="material-icons">dns</i>
+										<span>Laporan Inventaris</span>
+									</a>
+								</li>    
 							</ul>
 						</li>  
                 	</ul>
